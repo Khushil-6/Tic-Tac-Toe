@@ -1,46 +1,54 @@
+
+
+# This Function Show's the 3x3 board
 def show():
+    print(board[6], '|', board[7], '|', board[8])
+    print('----------')
+    print(board[3], '|', board[4], '|', board[5])
+    print('----------')
+    print(board[0], '|', board[1], '|', board[2])
 
-   print(board[6],'|',board[7],'|',board[8])
-   print('----------')
-   print(board[3],'|',board[4],'|',board[5])
-   print('----------')
-   print(board[0],'|',board[1],'|',board[2])
+
+# The function checks the winning conditions
+def checkline(chr,spot1, spot2, spot3):
+    if board[spot1] == chr and board[spot2] == chr and board[spot3] == chr:
+        return True
 
 
-def checkline(chr,spot1,spot2,spot3):
-   if board[spot1] == chr and board[spot2] == chr and board[spot3] == chr:
-       return True
-
+# The functions checks each line on the board with the help of checkline function
 def checkall(chr):
-   if checkline(chr ,0,1,2):
-       return True
-   if checkline(chr ,3,4,5):
-       return True
-   if checkline(chr ,6,7,8):
-       return True
-   if checkline(chr ,0,3,6):
-       return True
-   if checkline(chr ,1,4,7):
-       return True
-   if checkline(chr ,2,5,8):
-       return True
-   if checkline(chr ,2,4,6):
-       return True
-   if checkline(chr ,0,4,8):
-       return True
+    if checkline(chr, 0, 1, 2):
+        return True
+    if checkline(chr, 3, 4, 5):
+        return True
+    if checkline(chr, 6, 7, 8):
+        return True
+    if checkline(chr, 0, 3, 6):
+        return True
+    if checkline(chr, 1, 4, 7):
+        return True
+    if checkline(chr, 2, 5, 8):
+        return True
+    if checkline(chr, 2, 4, 6):
+        return True
+    if checkline(chr, 0, 4, 8):
+        return True
 
+
+# The function Checks if there is any available place on the board to place X or O
 def isboardfull():
+    check = 0
 
-   check=0
+    for space in board:
+        if space != ' ':
+            check += 1
+        else:
+            pass
+    if check == 9:
+        return True
 
-   for space in board:
-       if space != ' ':
-           check += 1
-       else:
-           pass
-   if check == 9:
-       return True
 
+# The function Prints the Overview of the game
 def overview():
     print('Overview :')
     print('\t'"There Would be Two Player's.\n\tPlayer_1 = X and Player_2 = O""\n")
@@ -52,6 +60,9 @@ def overview():
     print('\t\t', 1, '|', 2, '|', 3, '\n')
     print(
         "------------------------------------------------------------------------------------------------------------"'\n')
+
+
+# The Program starts
 
 board = [" "," "," "," "," "," "," "," "," "," "]
 print("\n \t!!! Welcome To The Tic Tc Toe !!!""\n")
